@@ -126,7 +126,7 @@ svm_Linear
 plot(svm_Linear)
 
 saveRDS(svm_Linear, "svm_model.rds")
-svm_Linear <- readRDS("/run/media/nick/Windows/Users/nvera/OneDrive/Documents/School/Unimi/DSE/Statistical and Deep Learning and AI/Project/svm_model.rds")
+svm_Linear <- readRDS("svm_model.rds")
 
 predictedSVM <- predict(svm_Linear, test)
 cmSVM <- confusionMatrix(y_test, predictedSVM)
@@ -140,7 +140,7 @@ modelGLM <- train(x=train, y=y_train, method = "glm",
              tuneLength=1)
 
 saveRDS(modelGLM, "glm_model.rds")
-modelGLM <- readRDS("/run/media/nick/Windows/Users/nvera/OneDrive/Documents/School/Unimi/DSE/Statistical and Deep Learning and AI/Project/glm_model.rds")
+modelGLM <- readRDS("glm_model.rds")
 
 pred <- predict(modelGLM, test)
 cmGLM <- confusionMatrix(y_test, pred)
@@ -171,7 +171,7 @@ plot(gbm_best)
 summary(gbm_best)
 
 saveRDS(gbm_best, "gbm_model.rds")
-gbm_best <- readRDS("/run/media/nick/Windows/Users/nvera/OneDrive/Documents/School/Unimi/DSE/Statistical and Deep Learning and AI/Project/gbm_model.rds")
+gbm_best <- readRDS("gbm_model.rds")
 
 predictedTestGBM <- predict(gbm_best, test)
 cmGBM <- confusionMatrix(y_test, predictedTestGBM)
@@ -291,7 +291,7 @@ dnn_best <- train(x=data.matrix(train),y=y_train, method = "dnn",
 
 plot(dnn_best)
 saveRDS(dnn_best, "ae_model.rds")
-dnn_best <- readRDS("/run/media/nick/Windows/Users/nvera/OneDrive/Documents/School/Unimi/DSE/Statistical and Deep Learning and AI/Project/ae_model.rds")
+dnn_best <- readRDS("ae_model.rds")
 
 predictedTestdnn <- predict(dnn_best,data.matrix(test))
 cm = table(y_test,predictedTestdnn)
@@ -329,7 +329,7 @@ timings_keras <- timings_keras/15 # DIVIDED BY N OF EPOCHS
 
 plot(history)
 model %>% save_model_hdf5("keras.h5")
-model <- load_model_hdf5("/run/media/nick/Windows/Users/nvera/OneDrive/Documents/School/Unimi/DSE/Statistical and Deep Learning and AI/Project/keras.h5")
+model <- load_model_hdf5("keras.h5")
 keras_acc <- model %>% evaluate(as.matrix(test), to_categorical(y_test))
 keras_acc
 
@@ -378,7 +378,7 @@ timings_CNN <- timings_CNN/15 # DIVIDED BY N OF EPOCHS
 
 plot(historyCNN)
 modelCNN %>% save_model_hdf5("cnn.h5")
-modelCNN <- load_model_hdf5("/run/media/nick/Windows/Users/nvera/OneDrive/Documents/School/Unimi/DSE/Statistical and Deep Learning and AI/Project/cnn.h5")
+modelCNN <- load_model_hdf5("cnn.h5")
 cnn_acc <- modelCNN %>% evaluate(as.matrix(test), to_categorical(y_test))
 cnn_acc
 
