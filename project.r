@@ -11,8 +11,8 @@ library(doMC) # Needed for parallel grid search
 registerDoMC(cores = 4)
 
 # Load the datasets
-cleaned_hm <- read.csv("/run/media/nick/Windows/Users/nvera/OneDrive/Documents/School/Unimi/DSE/Statistical and Deep Learning and AI/Project/happydb/data/cleaned_hm.csv", stringsAsFactors = FALSE)
-demographics <- read.csv("/run/media/nick/Windows/Users/nvera/OneDrive/Documents/School/Unimi/DSE/Statistical and Deep Learning and AI/Project/happydb/data/demographic.csv", stringsAsFactors = FALSE)
+cleaned_hm <- read.csv("data/cleaned_hm.csv", stringsAsFactors = FALSE)
+demographics <- read.csv("data/demographic.csv", stringsAsFactors = FALSE)
 
 # Merge the datasets by "wid"
 df <- cleaned_hm %>% inner_join(demographics, by = "wid")
